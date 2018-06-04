@@ -6,7 +6,7 @@ import (
 	"path"
 	"fmt"
 	"flag"
-	"github.com/pnovotnak/fman/internal/app/fman"
+	"github.com/pnovotnak/fman/internal/app/hfman"
 	"github.com/pnovotnak/fman/internal/pkg/httplib"
 )
 
@@ -33,11 +33,11 @@ func main()  {
 			os.Exit(1)
 		}
 	}
-	err = fman.CreateDirs(dir, dirPerm)
+	err = hfman.CreateDirs(dir, dirPerm)
 
 	http.HandleFunc("/", httplib.Redirector("/download/", 301))
 	http.Handle("/download/", http.StripPrefix("/download/", http.FileServer(http.Dir(path.Join(dir, "download")))))
-	http.HandleFunc("/upload/", fman.Router(dir, filePerm))
+	http.HandleFunc("/upload/", hfman.Router(dir, filePerm))
 
 	fmt.Println(os.Args[0], "starting, serving from:", dir, "bound to:", bind)
 	if err = http.ListenAndServe(bind, httplib.RequestLoggerHandler(http.DefaultServeMux)); err != nil {

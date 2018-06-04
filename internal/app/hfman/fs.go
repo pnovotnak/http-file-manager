@@ -1,4 +1,4 @@
-package fman
+package hfman
 
 import (
 	"os"
