@@ -6,8 +6,8 @@ import (
 	"path"
 	"fmt"
 	"flag"
-	"github.com/pnovotnak/fman/internal/app/hfman"
-	"github.com/pnovotnak/fman/internal/pkg/httplib"
+	"github.com/pnovotnak/http-file-manager/internal/app/hfman"
+	"github.com/pnovotnak/http-file-manager/internal/pkg/httplib"
 )
 
 func main()  {
